@@ -1,0 +1,64 @@
+{{ define "head1" }}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/s/css/main.css"/>
+{{end}}
+
+{{ define "head2" }}
+   
+</head>
+<body>
+    <div id="main-area" class="main-wide">
+
+    <div id="flex_box">
+        <div id="ribbon_loc">
+        <img src="/s/pics/banner.png" class="banner" />
+        </div>
+        <div id="contents">
+        
+    <script>
+    {{ getblobc "s/share/js" "go_menu.js" }}
+    menuJson = {{jsonMenu (getblobc "menu" "nav")}};
+    var ribdiv = document.getElementById("ribbon_loc");
+    ribdiv.appendChild(makeRibbonMenu(menuJson,"root"));
+    </script>
+    {{template "js-tallOrWide"}}
+
+
+{{ end}}
+
+{{define "head"}}
+    {{template "head1" .}}
+    <title>Story Feet</title>
+    <meta name="description" content="Storytelling, Magic, Illustration. All parts of what we offer. Come and see." >
+    {{template "head2" . }}
+{{end}}
+
+
+{{ define "base" }}
+</div><!-- contents -->
+</div><!-- flex -->
+<!--img class="banner" src="/s/pics/bottom.svg" style="vertical-align:bottom;"-->
+</div><!-- main-area -->
+</body>
+</html>
+{{ end}}
+
+
+{{ define "loose"}}
+
+    {{$hmap := getblobMD "root" .FileName}}
+    {{template "head1" .}}
+            <title>{{index $hmap "title"}}</title>
+            <meta name="description" content="{{index $hmap "description"}}">
+            {{index $hmap "head"}}
+    {{template "head2" .}}
+        {{if index $hmap "title"}}
+            <h1>{{index $hmap "title"}}</h1>
+        {{end}}
+        {{index $hmap "contents"}}
+    
+    {{template "base" . }}
+{{end}}

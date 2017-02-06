@@ -1,0 +1,21 @@
+body {
+    background:green;
+    background:linear-gradient(to bottom,#38632e,#cfd0b1);
+    background-size:cover;
+    background-position:center center;
+    background-attachment:fixed;
+}
+
+#main-area {
+    background:none;
+}
+
+.main-wide #ribbon_loc{
+    width:25%;
+} 
+
+.main-wide #ribbon_loc img{
+    width:100%;
+    max-height:50vh;
+}
+

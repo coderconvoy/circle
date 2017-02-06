@@ -1,0 +1,15 @@
+
+{{ define "index" }}
+    {{ template "head1" .}}
+    <style>
+        #contents p a{
+            font-size:120%;
+        }
+    </style>
+    {{ template "head2" .}}
+    {{index (getblobMD "root" "index.md") "contents" }}
+    
+
+    {{ template "base" .}}
+
+{{ end }}
